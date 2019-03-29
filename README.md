@@ -10,7 +10,7 @@ Code challenge for software sauna
 ## How to run
 1. Make git clone/pull to your local folder.
 2. Run -> bundle install
-3. Run -> ruby init.rb maps/ASCII-MAP-3.txt (in maps folder are 1,2,3 maps, two others are for testing invalid input)
+3. Run -> ruby init.rb maps/ASCII-MAP-3.txt (in maps folder are 1,2,3 maps (ASCII-MAP-3.txt), two other two are for testing invalid input)
 4. Run all tests -> bundle exec rspec spec
 5. Run test in isolation -> rspec spec/create_map.rb
 
