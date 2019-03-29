@@ -6,14 +6,20 @@ class GetElement
 
     attr_reader :map, :position
 
-    def initialize(position, map)
-        @position = position
+    def initialize(map, position)
         @map = map
+        @position = position
     end
 
     def call
-        map.blank? ? (raise Error, Constants::ERRORS[:empty_map]) : false
-        position.blank? ? (raise Error, Constants::ERRORS[:empty_position]) : false
+        is_blank?(map, :empty_map)
+        is_blank?(position, :empty_position)
         map[position[0]][position[1]]
+    end
+
+    private
+    
+    def is_blank?(var, error_code)
+        var.blank? ? (raise Error, Constants::ERRORS[error_code]) : false
     end
 end

@@ -10,5 +10,6 @@ module Constants
         :no_finish => 'no end position',
         :empty_position => 'position is empty',
         :empty_direction => 'direction is empty',
+        :invalid_array => 'array is invalid'
 }.freeze
 end

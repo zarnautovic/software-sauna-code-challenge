@@ -13,11 +13,17 @@ class MoveToNextPosition
     end
 
     def call
-        current_position.blank? ? (raise Error, Constants::ERRORS[:current_empty]) : false
+        is_blank?(current_position, :current_empty)
         Constants::DIRECTIONS[:left] == direction ? (return [current_position[0], current_position[1]-1]) : false
         Constants::DIRECTIONS[:right] == direction ? (return [current_position[0], current_position[1]+1]) : false
         Constants::DIRECTIONS[:up] == direction ? (return [current_position[0]-1, current_position[1]]) : false
         Constants::DIRECTIONS[:down] == direction ? (return [current_position[0]+1, current_position[1]]) : false
         raise Error, Constants::ERRORS[:invalid_direction]
+    end
+
+    private
+    
+    def is_blank?(var, error_code)
+        var.blank? ? (raise Error, Constants::ERRORS[error_code]) : false
     end
 end

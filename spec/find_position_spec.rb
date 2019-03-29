@@ -3,6 +3,7 @@ require './services/find_position'
 
 describe 'Find Position' do
     let(:map)  { map_array }
+    let(:invalid_map) { empty_map_array }
     let(:start) {'@'}
     let(:finish) {'x'}
     let(:error_element) {'%'}
@@ -20,6 +21,9 @@ describe 'Find Position' do
         it 'returns nil' do
             position = FindPosition.new(map, error_element).call
             expect(position).to eq(nil)
+        end
+        it 'raise invalid array' do
+            expect { FindPosition.new(invalid_map, start).call }.to raise_error(Constants::ERRORS[:invalid_array])
         end
     end
 end

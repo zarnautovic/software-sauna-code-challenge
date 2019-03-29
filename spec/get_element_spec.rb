@@ -9,14 +9,14 @@ describe 'GetElement' do
     let(:empty_position) { nil }
     describe '.call' do
         it 'returns start element @' do
-            element = GetElement.new(position, map).call
+            element = GetElement.new(map, position).call
             expect(element).to eq('@')
         end
         it 'raise map is empty error' do
-            expect { GetElement.new(position, empty_map).call }.to raise_error(Constants::ERRORS[:empty_map])
+            expect { GetElement.new(empty_map, position).call }.to raise_error(Constants::ERRORS[:empty_map])
         end
         it 'raise position is empty' do
-            expect { GetElement.new(empty_position, map).call }.to raise_error(Constants::ERRORS[:empty_position])
+            expect { GetElement.new(map, empty_position).call }.to raise_error(Constants::ERRORS[:empty_position])
         end
     end
 end

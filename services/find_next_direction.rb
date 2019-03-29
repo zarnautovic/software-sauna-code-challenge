@@ -14,8 +14,8 @@ class FindNextDirection
     end
 
     def call
-        map.blank? ? (raise Error, Constants::ERRORS[:empty_map]) : false
-        current_position.blank? ? (raise Error, Constants::ERRORS[:current_empty]) : false
+        is_blank?(map, :empty_map)
+        is_blank?(current_position, :current_empty)
         direction = direction(define_posible_direcitons, previous_direction)
         (direction == false || direction.blank?) ? (raise Error, Constants::ERRORS[:invalid_direction]) : direction
     end
@@ -47,5 +47,9 @@ class FindNextDirection
         (posible_directions.key(previous_direction) == :right and !map[current_position[0]][current_position[1]+1].blank?) ? (return true) : false
         (posible_directions.key(previous_direction) == :up and !map[current_position[0]-1][current_position[1]].blank?) ? (return true) : false
         (posible_directions.key(previous_direction) == :down and !map[current_position[0]+1][current_position[1]].blank?) ? (return true) : false
+    end
+    
+    def is_blank?(var, error_code)
+        var.blank? ? (raise Error, Constants::ERRORS[error_code]) : false
     end
 end
